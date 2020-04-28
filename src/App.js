@@ -1,10 +1,12 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { Message } from './components/Message'
+import { messages } from 'reducer/messages'
+import { NewMessage } from './components/NewMessage'
+import { MessageList } from './components/MessageList'
 
 const reducer = combineReducers({
-  message: message.reducer,
+  messages: messages.reducer
 })
 
 const store = configureStore({ reducer })
@@ -13,8 +15,8 @@ export const App = () => {
   return (
     <div>
       <Provider store={store}>
-        <Message />
-      Find me in src/app.js!
+        <MessageList />
+        <NewMessage />
       </Provider>
     </div>
   )

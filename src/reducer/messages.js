@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export const message = createSlice({
+export const messages = createSlice({
 
-	name: 'message',
+	name: 'messages',
 	initialState: {
 		text: []
 	},

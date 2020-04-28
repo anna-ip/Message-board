@@ -1,19 +1,18 @@
 {
-  "posts": [
+  "messages": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "id": 0,
+      "message": "Tonight I read Forbron och det röda äpplet"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "message": "Come and read for me",
+      "author": 0,
+      "id": 5
+    },
+    {
+      "message": "One more book...please",
+      "author": 2,
+      "id": 6
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
