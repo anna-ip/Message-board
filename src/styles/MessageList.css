@@ -1,0 +1,19 @@
+li {
+	width: 500px;
+	height: auto;
+	border-radius: 10px;
+	list-style: none;
+	background-color: lightgray;
+	padding: 5px;
+	margin-bottom: 8px;
+	-webkit-box-shadow: 7px 10px 13px -10px #333333;
+  box-shadow: 7px 10px 13px -10px #333333;
+	/* border: 1px solid black; */
+
+}
+
+p {
+	color: black;
+	font-size: medium;
+	margin-left: 5px;
+}
