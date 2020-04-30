@@ -1,3 +1,14 @@
+.message-list {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+ul {
+	padding: inherit;
+}
+
 li {
 	width: 500px;
 	height: auto;

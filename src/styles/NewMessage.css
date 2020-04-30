@@ -1,20 +1,16 @@
-/* .add-message-container{
+.add-message-container{
 	display: flex;
-	flex-direction: column;
-	padding: 10px 0;
-	border-bottom: 1.5px solid white;
+	padding: 0px 30px;
 	justify-content: center;
-} */
+} 
 
 .add-message-form {
 	display: flex;
 	flex-direction: column;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-
-	/* justify-content: space-evenly;
-	width: 100%; */
+	position: fixed;
+	width: 70vw;
+	bottom: 50px;
+  border: 3px solid #8AC007;
 }
 
 /* .input-message {
@@ -30,7 +26,7 @@
 textarea {
   border: 0.5px solid #ababab;
 	background-color: #ababab;
-	width: 500px;
+	width: -webkit-fill-available;
 	height: auto;
 	border-radius: 10px;
 	padding: 5px;
@@ -43,9 +39,17 @@ textarea {
 	/* padding: 3px;
 	background-color: #ababab;
 }  */
+
+.add-message-btn-container {
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 5px;
+	
+}
+
 .add-message-btn {
-  width: 90px;
-  padding: 5px;
+  width: 110px;
+  padding: 6px;
   border: 1px solid black; 
   border-radius: 13px;
   background-color: #ababab;

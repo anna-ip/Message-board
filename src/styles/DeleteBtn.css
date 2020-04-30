@@ -1,3 +1,5 @@
-button {
+.delete-btn {
+	position: absolute;
+	right: 110px;
 	color: black;
 }

@@ -1,0 +1,8 @@
+.edit-btn {
+	position: absolute;
+	right: 130px; 
+	color: black;
+	font-size: 15px;
+	padding: 0 5px;
+	transform: rotateY(180deg);
+}

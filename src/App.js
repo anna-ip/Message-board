@@ -13,7 +13,7 @@ const store = configureStore({ reducer })
 
 export const App = () => {
   return (
-    <div>
+    <div className="message-page">
       <Provider store={store}>
         <MessageList />
         <NewMessage />

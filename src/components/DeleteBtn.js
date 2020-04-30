@@ -5,18 +5,18 @@ import 'styles/DeleteBtn.css'
 
 
 
-export const DeleteBtn = ({ message }) => {
+export const DeleteBtn = () => {
 	const dispatch = useDispatch()
 
 	const handleDeleteMessageClick = () => {
-		dispatch(messages.actions.deleteMessage(message))
-		console.log(handleDeleteMessageClick)
+		dispatch(messages.actions.deleteMessage(messages))
+		console.log('delete message', handleDeleteMessageClick)
 	}
 
 	return (
-		<button
+		<button className="delete-btn"
 			onClick={handleDeleteMessageClick}>
-			<span role="img" aria-label="x">✖︎</span>
+			<span role="img" aria-label="delete">✖︎</span>
 		</button>
 	)
 }

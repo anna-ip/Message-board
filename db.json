@@ -1,18 +1,23 @@
 {
-	"messages": [
-		{
-			"id": 0,
-			"message": "Tonight I read Farbron och det röda äpplet"
-		},
-		{
-			"message": "Come and read for me",
-			"author": 0,
-			"id": 5
-		},
-		{
-			"message": "One more book...please",
-			"author": 2,
-			"id": 6
-		}
-	]
+  "messages": [
+    {
+      "id": 0,
+      "message": "Tonight I read Farbrorn och det röda äpplet"
+    },
+    {
+      "message": "Come and read for me",
+      "author": 0,
+      "id": 5
+    },
+    {
+      "message": "One more book...please",
+      "author": 2,
+      "id": 6
+    },
+    {
+      "message": "Just one more",
+      "author": 2,
+      "id": 7
+    }
+  ]
 }

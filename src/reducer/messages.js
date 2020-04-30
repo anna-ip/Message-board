@@ -4,37 +4,45 @@ export const messages = createSlice({
 
 	name: 'messages',
 	initialState: {
+		//initialState of allMessages be when fetched? initialState:setMessages ?
 		allMessages: [],
 		selectedMessage: []
 	},
 
+	//here the actions are created within the reducer, with a key=setMessages and the value is the function calling that key
 	reducers: {
-		//this reducer is to get all messages from the first fetch
+		//*******/this reducer is to GET all messages from the GET request/fetch ******
 		setMessages: (state, action) => {
-			console.log(state)
-			console.log(action)
+			console.log('setMessages', state)
+			console.log('setMessages', action)
+			//this is to get all the messages that are in our payload
 			state.allMessages = action.payload
 		},
 
+		// *****this reducer adds a new Message******
 		addMessage: (state, action) => {
 			console.log('addMessage', state)
 			console.log('addMessage', action)
+			//all Messages needs an id: number, author: number, message: string (payload)
 			//author: Date:Now() gives it a millisecond based id-probably round it to the last two digit
-			state.allMessages.push({ author: Date.now(), message: action.payload })
+			state.allMessages.push({ author: Date.now(), message: action.payload, id: Date.now() })
 		},
 
-		//v.2
-		// addMessage: (state, action) => {
-		// 	console.log('addMessage', state)
-		// 	console.log('addMessage', action)
-		// 	const existingMessage = state.selectedMessage.find((message) => message.id === action.payload.id)
-		// 	if (existingMessage) {
-		// 	} else {
-		// 		// state.selectedMessage.push(action.payload)
-		// 		// or
-		// 		state.selectedMessages.push({ author: Date.now(), message: action.payload })
-		// 	}
-		// },
+		// **** this reduce should change the messag with a PUT request
+		editMessage: (state, action) => {
+			console.log('changeMessage', state)
+			console.log('changeMessage', action)
+			// needs to find the message and then alter it
+			const existingMessage = state.allMessages.find((message) => message.id === action.payload.id)
+			if (existingMessage) {
+				//state.allMessages.....()
+				//here goes the logic for changing the message
+				// 	} else {
+				// 		// state.selectedMessage.push(action.payload)?
+				// 		// or
+				// 		state.selectedMessages.push({ author: Date.now(), message: action.payload })?
+			}
+		},
 
 		//to delete message the id will be needed
 		deleteMessage: (state, action) => {
@@ -43,12 +51,9 @@ export const messages = createSlice({
 			//finds the task
 			//remove it from the array
 			//id= ....
-			// ex. state.items = state.items.filter((item) => item.id !== action.payload)
+			//PROBLEM removes all new messages and non from the db
+			state.allMessages = state.allMessages.filter((message) => message.id !== action.payload.id)
 
-			const existingMessage = state.selectedMessage.find((message) => message.id === action.payload.id)
-			if (existingMessage) {
-				state.selectedMessage = state.selectedMessage.filter((message) => message.id !== action.payload.id)
-			}
 		},
 	}
 
@@ -81,7 +86,7 @@ export const fetchNewMessage = () => {
 				console.log('POST', json)
 				dispatch(messages.actions.addMessage(json))
 
-				//dispatch allmessages/setMessages as well
+				//dispatch allmessages/setMessages as well?
 
 				//this is from the happy thought project
 				// .then((newMessage) => {
@@ -103,9 +108,9 @@ export const fetchDeleteMessage = (id) => {
 			method: 'DELETE',
 		})
 			.then((res) => res.json())
-			.then(res => {
-				console.log('DELETE')
-				// dispatch(deleteMessage(messageId))
+			.then(json => {
+				console.log('DELETE', json)
+				dispatch(messages.action.deleteMessage(messages))
 			})
 	}
 }
