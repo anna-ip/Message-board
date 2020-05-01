@@ -1,34 +1,36 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import '../styles/NewMessage.css'
-import { messages } from 'reducer/messages'
+import { fetchNewMessage } from 'reducer/messages'
 
 export const NewMessage = () => {
-  const [addNewMessage, setAddNewMessage] = useState('')
+  const [message, setMessage] = useState('')
   const dispatch = useDispatch()
 
-  // this button also needs to update the list of messages
+
   const handleMessageSubmit = (event) => {
     event.preventDefault()
-    console.log('addNewMessage', addNewMessage)
-    dispatch(messages.actions.addMessage(addNewMessage))
-    // this empty the textarea once submited
-    setAddNewMessage('')
+    console.log('addNewMessage', message)
+    dispatch(fetchNewMessage(message))
+    // this empties the textarea once submited
+    setMessage('')
   }
+
   return (
     <div className="add-message-container">
       {/* ******Form for sending a new message******* */}
       <form onSubmit={handleMessageSubmit} className="add-message-form">
-        <label htmlFor="new-message">
+        <label For="new-message">
+          {/* needs to add author and name? */}
           <textarea
             id="new-message"
             className="input-message"
-            rows="3" // doesn't seem to work?
-            minLength="5"
-            maxLength="150"
+            rows='3' // doesn't seem to work?
+            minLength='5'
+            maxLength='150'
             placeholder="Type your message"
-            onChange={(event) => setAddNewMessage(event.target.value)} // value is what ever we write as a message
-            value={addNewMessage}
+            onChange={(event) => setMessage(event.target.value)} // value is what ever we write as a message
+            value={message}
             required />
         </label>
 
@@ -36,7 +38,8 @@ export const NewMessage = () => {
         <div className="add-message-btn-container">
           <button
             className="add-message-btn"
-            type="submit">
+            type="submit"
+            title="Send">
             Send
           </button>
         </div>

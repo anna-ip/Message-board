@@ -6,6 +6,7 @@ export const messages = createSlice({
 	initialState: {
 		//initialState of allMessages be when fetched? initialState:setMessages ?
 		allMessages: [],
+		message: [],
 		selectedMessage: []
 	},
 
@@ -24,8 +25,8 @@ export const messages = createSlice({
 			console.log('addMessage', state)
 			console.log('addMessage', action)
 			//all Messages needs an id: number, author: number, message: string (payload)
-			//author: Date:Now() gives it a millisecond based id-probably round it to the last two digit
-			state.allMessages.push({ author: Date.now(), message: action.payload, id: Date.now() })
+			//state.messages = action.payload
+			state.allMessages.push({ author: 1, message: action.payload, id: Date.now() })
 		},
 
 		// **** this reduce should change the messag with a PUT request
@@ -65,34 +66,30 @@ export const fetchAllMessages = () => {
 	return (dispatch) => {
 		fetch('http://localhost:3004/messages')
 			.then((res) => res.json())
-			.then((json) => {
-				console.log('Get', json)
-				dispatch(messages.actions.setMessages(json))
+			.then((messages) => {
+				console.log('Get', messages)
+				dispatch(messages.actions.setMessages(messages))
 			})
 	}
 }
 
 //POST a new Message
-export const fetchNewMessage = () => {
+export const fetchNewMessage = (message) => {
 	return (dispatch) => {
 		fetch('http://localhost:3004/messages', {
 			method: 'POST',
-			body: JSON.stringify(),
+			body: JSON.stringify({ message }),
 			// body: JSON.stringify({ message }),
 			headers: { 'Content-Type': 'application/json' }
 		})
 			.then((res) => res.json())
 			.then((json) => {
 				console.log('POST', json)
-				dispatch(messages.actions.addMessage(json))
-
-				//dispatch allmessages/setMessages as well?
-
-				//this is from the happy thought project
-				// .then((newMessage) => {
-				// 	setnewMessage((previousMessage) => [newMessage, ...previousMessage])
-				// })
-				// .then(() => setMessage(""))
+				dispatch(messages.actions.addMessage())
+			})
+			.catch(err => {
+				console.error('error', err)
+				//errorMessage?
 			})
 	}
 }
