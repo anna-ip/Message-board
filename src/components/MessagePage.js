@@ -2,12 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { NewMessage } from 'components/NewMessage'
 import { MessageList } from 'components/MessageList'
+import 'styles/MessagePage.css'
 
 export const MessagePage = () => {
 	return (
 		<>
-			<Link className="back-link" to={`/`}>
-				<button>Log out</button>
+			<Link to={`/`}>
+				<button className="log-out-btn">Log out</button>
 			</Link>
 			<MessageList />
 			<NewMessage />

@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import '../styles/NewMessage.css'
 import { fetchNewMessage } from 'reducer/messages'
 
 export const NewMessage = () => {
   const [message, setMessage] = useState('')
+  //this useSelector isnt working
+  const user = useSelector((state) => state.messages.user)
+  console.log('User', user)
   const dispatch = useDispatch()
 
 
   const handleMessageSubmit = (event) => {
     event.preventDefault()
     console.log('addNewMessage', message)
+    //needs to pass an author as well
     dispatch(fetchNewMessage(message))
     // this empties the textarea once submited
     setMessage('')
@@ -20,6 +24,7 @@ export const NewMessage = () => {
     <div className="add-message-container">
       {/* ******Form for sending a new message******* */}
       <form onSubmit={handleMessageSubmit} className="add-message-form">
+        {/* <p>{user.name}</p> //not working */}
         <label For="new-message">
           {/* needs to add author and name? */}
           <textarea

@@ -16,25 +16,19 @@ const store = configureStore({ reducer })
 
 export const App = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <div className="message-page">
-          <Provider store={store}>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Switch>
+          <div className="message-page">
             <Route path="/" exact>
               <SignIn />
             </Route>
-            <Route path="/messages">
+            <Route path="/messages" exact>
               <MessagePage />
             </Route>
-
-            {/* <MessageList />
-        <NewMessage /> */}
-          </Provider>
-        </div>
-
-      </Switch>
-    </BrowserRouter>
-
-
+          </div>
+        </Switch>
+      </BrowserRouter>
+    </Provider>
   )
 }

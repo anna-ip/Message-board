@@ -1,30 +1,36 @@
 .message-list {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	/* justify-content: center; */
 	align-items: center;
+	max-height: 500px;
 }
 
 ul {
 	padding: inherit;
+	max-height: fit-content;
+	margin: 0;
 }
 
 li {
-	width: 500px;
+	width: 70vw;
+  max-width: 500px;
 	height: auto;
 	border-radius: 10px;
 	list-style: none;
-	background-color: lightgray;
+	background-color: white;
 	padding: 5px;
-	margin-bottom: 8px;
-	-webkit-box-shadow: 7px 10px 13px -10px #333333;
+	margin: 3% 0;
   box-shadow: 7px 10px 13px -10px #333333;
-	/* border: 1px solid black; */
+}
 
+.message-container {
+	width: fit-content;
 }
 
 p {
 	color: black;
 	font-size: medium;
 	margin-left: 5px;
+	word-break: break-all;
 }

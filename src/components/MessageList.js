@@ -1,25 +1,27 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-//import { messages, fetchAllMessages } from 'reducer/messages'
 import 'styles/MessageList.css'
 import { EditBtn } from './EditBtn'
 import { DeleteBtn } from './DeleteBtn'
 
 export const MessageList = () => {
   //this useSelector imports all the messages from the store
-  const allMessages = useSelector((state) => state.messages.setMessages)
-  //const allMessages = useSelector((state) => state.messages.allMessages)
-  console.log('MessageList', allMessages)
+  const allMessages = useSelector((state) => state.messages.allMessages)
+
+  console.log('allMessagesInMessagesList', allMessages)
+
 
 
   return (
     <div className="message-list">
       <ul>
-        {allMessages.map((message) => (
+        {allMessages.slice(0).reverse().map((message) => (
           <li key={message.id}>
-            <EditBtn />
-            <DeleteBtn />
-            <p key={message.id}>{message.message}</p>
+            <EditBtn message={message} />
+            <DeleteBtn message={message} />
+            <div className="message-container">
+              <p key={message.id}>{message.message}</p>
+            </div>
           </li>
         ))}
       </ul>
