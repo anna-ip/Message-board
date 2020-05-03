@@ -1,6 +1,6 @@
 # Message Board
 
-This is a Message Board app where client can sign in and post messages as well as edit and delete their messages, built with a mock API.
+This is a Message Board app where client can sign in and post messages, see old messages as well as edit and delete their messages, built with a mock API.
 
 The App is built with React Redux,fetching a mock Api from db.json with thunks, I've used Redux toolkit for configuring the store and combine reducers and React Router for routes.
 
