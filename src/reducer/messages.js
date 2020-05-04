@@ -145,5 +145,16 @@ export const fetchDeleteMessage = (id) => {
 				console.error('error', err)
 				dispatch(messages.actions.deleteMessage({ error: `Error, failed to delete` }))
 			})
+		//added the GET fetch here to update the list once one message has been deleted, but not working?
+		fetch('http://localhost:3004/messages?_sort=id&_order=desc&_limit=5')
+			.then((res) => res.json())
+			.then((json) => {
+				console.log('Get', json)
+				dispatch(messages.actions.setMessages(json))
+			})
+			.catch(err => {
+				console.error('error', err)
+				dispatch(messages.actions.setMessages({ error: `Could not fetch` }))
+			})
 	}
 }

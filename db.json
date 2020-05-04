@@ -11,28 +11,22 @@
       "id": 5
     },
     {
-      "message": "One more book...please",
-      "author": 2,
+      "message": "Last night we read \"Gunga mig godnatt, pappa\"",
+      "author": "3",
+      "name": "ANNA",
       "id": 6
     },
     {
-      "message": "Just one more",
-      "author": 2,
+      "message": "Last night I read \"ABC\" for my kids",
+      "author": "4",
+      "name": "Karin",
       "id": 7
     },
     {
-      "id": 8
-    },
-    {
-      "message": "Hello",
-      "author": "2",
-      "id": 10
-    },
-    {
-      "message": "csBVÖDBSVÖ",
+      "message": "Yesterday I read \"Tippen\"",
       "author": "3",
-      "name": "ANNA",
-      "id": 11
+      "name": "Gustav",
+      "id": 8
     }
   ]
 }

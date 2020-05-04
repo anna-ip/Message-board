@@ -3,4 +3,6 @@
 	font-size: 15px;
 	padding: 0 5px;
 	transform: rotateY(180deg);
+	background-color: inherit;
+	border: none;
 }

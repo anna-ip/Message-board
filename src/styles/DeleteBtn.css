@@ -1,4 +1,6 @@
 .delete-btn {
 	color: black;
 	font-size: 14px;
+	background-color: inherit;
+	border: none;
 }
