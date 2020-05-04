@@ -2,20 +2,23 @@
 
 This is a Message Board app where client can sign in and post messages, see old messages as well as edit and delete their messages, built with a mock API.
 
-The App is built with React Redux,fetching a mock Api from db.json with thunks, I've used Redux toolkit for configuring the store and combine reducers and React Router for routes.
+The App is built with React Redux,fetching a mock Api from db.json built with json server fetched with thunks, I've used Redux toolkit for configuring the store and combine reducers.
 
-I will continue on this project with buildning a backend for the user with authentication and for the messages.......................improve the css
+I will continue on this project, make the put request to work and with enter tab, buildning a backend to register user, authentication and for add, change and delete messages and improve the css.
 
 ## Technologies
 * React
 * Redux
-* React Router
+* json server
 
 
 ## Usage
 * Install required dependencies with npm: `npm install`
-* Dependencies used npm:`react-redux @redux.js/toolkit -g json-server react-router-dom`
+* Dependencies used npm:`react-redux @redux.js/toolkit -g json-server`
 * Start the project: `npm start`
 * Start the server with `json-server --watch db.json --port 3004`
+
+## Deployed version
+https://message-board-anna-almestal.netlify.app/
 
 
