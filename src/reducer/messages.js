@@ -9,18 +9,11 @@ export const messages = createSlice({
 		message: {
 			success: null,
 			error: null
-		},
-		user: []
+		}
 	},
 
 	//here the actions are created within the reducer, with a key=setMessages and the value is the function calling that key
 	reducers: {
-		setUser: (state, action) => {
-			console.log('setUserState', state)
-			console.log('setUserAction', action)
-			//state.user = action.payload
-			state.user.push({ author: Date.now(), name: action.payload })
-		},
 		//*******/this reducer is to GET all messages from the GET request/fetch ******
 		setMessages: (state, action) => {
 			console.log('setMessagesState', state)
@@ -33,36 +26,31 @@ export const messages = createSlice({
 		addMessage: (state, action) => {
 			console.log('addMessageState', state)
 			console.log('addMessageAction', action)
-			//all Messages needs an id: number, author: number, message: string (payload)
 			state.message = action.payload
-			//state.allMessages.push({ author: 1, message: action.payload, id: Date.now() })
 		},
 
 		// **** this reducer/action should change the message with a PUT request
 		editMessage: (state, action) => {
-			console.log('changeMessage', state)
-			console.log('changeMessage', action)
-			// needs to find the message and then alter it
+			console.log('changeMessageState', state)
+			console.log('changeMessageAction', action)
+			// needs to find the message via id and then edit it
 			const existingMessage = state.allMessages.find((message) => message.id === action.payload.id)
 			if (existingMessage) {
 				//state.allMessages.....()
 				//here goes the logic for changing the message
 				// 	} else {
-				// 		// state.selectedMessage.push(action.payload)?
-				// 		// or
-				// 		state.selectedMessages.push({ author: Date.now(), message: action.payload })?
+				// 		// state.allMessages = action.payload
+
 			}
 		},
 
-		//to delete message the id will be needed
 		deleteMessage: (state, action) => {
-			console.log('deleteMessage', state)
-			console.log('deleteMessage', action)
+			console.log('deleteMessageState', state)
+			console.log('deleteMessageAction', action)
 			//finds the task
 			//remove it from the array
-			//id= ....
-			//PROBLEM removes all new messages and non from the db
-			state.allMessages = state.allMessages.filter((message) => message.id !== action.payload.id)
+			state.allMessages = state.allMessages.filter((message) => message.id !== action.payload)
+			//state.allMessages = state.allMessages.filter((message) => message.id !== action.payload.id)
 		},
 	}
 
@@ -72,7 +60,7 @@ export const messages = createSlice({
 //****** GET all messages *******
 export const fetchAllMessages = () => {
 	return (dispatch) => {
-		fetch('http://localhost:3004/messages')
+		fetch('http://localhost:3004/messages?_sort=id&_order=desc&_limit=5')
 			.then((res) => res.json())
 			.then((json) => {
 				console.log('Get', json)
@@ -85,14 +73,13 @@ export const fetchAllMessages = () => {
 	}
 }
 
-//**** POST a new Message ****
-export const fetchNewMessage = (message) => {
+//**** POST a new message and GET the new list of messages ****
+export const fetchNewMessage = (message, author, name) => {
 	return (dispatch) => {
 		fetch('http://localhost:3004/messages', {
 			method: 'POST',
 			statusCode: 204,
-			body: JSON.stringify({ message }),
-			// body: JSON.stringify({ message }),
+			body: JSON.stringify({ message, author, name }),
 			headers: { 'Content-Type': 'application/json' }
 		})
 			.then((res) => res.json())
@@ -104,7 +91,6 @@ export const fetchNewMessage = (message) => {
 				console.error('error', err)
 				dispatch(messages.actions.addMessage({ error: `Error, failed to save` }))
 			})
-		//This endponit gives the 10 next to the last ten, want the last ten
 		fetch('http://localhost:3004/messages?_sort=id&_order=desc&_limit=5')
 			.then((res) => res.json())
 			.then((json) => {
@@ -140,18 +126,20 @@ export const fetchEditMessage = (id) => {
 	}
 }
 
-
 //****** fetch DELETE message ********
 export const fetchDeleteMessage = (id) => {
 	return (dispatch) => {
 		fetch(`http://localhost:3004/messages/${id}`, {
 			method: 'DELETE',
 			statusCode: 204,
+			headers: {
+				'Content-Type': 'application/json'
+			}
 		})
 			.then((res) => res.json())
 			.then(json => {
-				console.log('DELETE', json)
-				dispatch(messages.action.deleteMessage(messages))
+				console.log('DELETE', json, id)
+				dispatch(messages.action.deleteMessage(id))
 			})
 			.catch(err => {
 				console.error('error', err)

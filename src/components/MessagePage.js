@@ -7,12 +7,13 @@ import 'styles/MessagePage.css'
 export const MessagePage = () => {
 	return (
 		<>
-			<Link to={`/`}>
+			{/* <Link to={`/`}>
 				<button className="log-out-btn">Log out</button>
-			</Link>
-			<MessageList />
-			<NewMessage />
+			</Link> */}
+			<div className="message-page">
+				<MessageList />
+				<NewMessage />
+			</div>
 		</>
 	)
-
 }

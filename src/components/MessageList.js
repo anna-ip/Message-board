@@ -17,10 +17,15 @@ export const MessageList = () => {
       <ul>
         {allMessages.slice(0).reverse().map((message) => (
           <li key={message.id}>
-            <EditBtn message={message} />
-            <DeleteBtn message={message} />
+            <div className="header-container">
+              <p className="message-name">{message.name}</p>
+              <div className="btn-container">
+                <EditBtn message={message} />
+                <DeleteBtn message={message} />
+              </div>
+            </div>
             <div className="message-container">
-              <p key={message.id}>{message.message}</p>
+              <p className="message" key={message.id}>{message.message}</p>
             </div>
           </li>
         ))}

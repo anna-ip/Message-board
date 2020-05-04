@@ -1,11 +1,19 @@
+.message-page {
+	max-width: 500px;
+  min-width: 350px;
+	min-height: 500px;
+	margin: 40px auto;
+}
+
 .log-out-btn {
 	background-color: #ff5c28;
 	color: white;
 	width: 100px;
-	height: auto;
+	height: 30px;
 	border-radius: 13px;
 	padding: 5px;
-	margin: 30px 0 0 30px;
+	margin-top: 30px;
+	margin-left: 5px;
 	text-transform: uppercase;
 	box-shadow: 7px 10px 13px -10px #333333;
 }

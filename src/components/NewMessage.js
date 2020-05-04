@@ -1,21 +1,19 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import '../styles/NewMessage.css'
 import { fetchNewMessage } from 'reducer/messages'
 
 export const NewMessage = () => {
   const [message, setMessage] = useState('')
-  //this useSelector isnt working
-  const user = useSelector((state) => state.messages.user)
-  console.log('User', user)
-  const dispatch = useDispatch()
+  const [name, setName] = useState('')
+  const [author, setAuthor] = useState('')
 
+  const dispatch = useDispatch()
 
   const handleMessageSubmit = (event) => {
     event.preventDefault()
-    console.log('addNewMessage', message)
-    //needs to pass an author as well
-    dispatch(fetchNewMessage(message))
+
+    dispatch(fetchNewMessage(message, author, name))
     // this empties the textarea once submited
     setMessage('')
   }
@@ -24,20 +22,52 @@ export const NewMessage = () => {
     <div className="add-message-container">
       {/* ******Form for sending a new message******* */}
       <form onSubmit={handleMessageSubmit} className="add-message-form">
-        {/* <p>{user.name}</p> //not working */}
-        <label For="new-message">
-          {/* needs to add author and name? */}
-          <textarea
-            id="new-message"
-            className="input-message"
-            rows='3' // doesn't seem to work?
-            minLength='5'
-            maxLength='150'
-            placeholder="Type your message"
-            onChange={(event) => setMessage(event.target.value)} // value is what ever we write as a message
-            value={message}
-            required />
-        </label>
+        <div className="user-div">
+          <span>
+            <label>
+              name:
+            <input
+                placeholder="Name"
+                type="text"
+                onChange={event => setName(event.target.value)}
+                name="name"
+                value={name}
+                required
+              />
+            </label>
+          </span>
+
+          <span>
+            <label>
+              no:
+            <input
+                className="input-no"
+                placeholder="No"
+                type="number"
+                onChange={event => setAuthor(event.target.value)}
+                name="author"
+                value={author}
+                required
+              />
+            </label>
+          </span>
+        </div>
+
+        <span>
+          <label For="new-message">
+            <textarea
+              id="new-message"
+              className="input-message"
+              rows='3' // doesn't seem to work?
+              minLength='5'
+              maxLength='150'
+              placeholder="Type your message"
+              onChange={(event) => setMessage(event.target.value)} // value is what ever we write as a message
+              value={message}
+              required />
+          </label>
+        </span>
+
 
         {/* * Form submit button * */}
         <div className="add-message-btn-container">

@@ -17,18 +17,21 @@ const store = configureStore({ reducer })
 export const App = () => {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <Switch>
-          <div className="message-page">
-            <Route path="/" exact>
-              <SignIn />
+      <div className="message-page">
+        {/* <BrowserRouter>
+          <Switch>
+
+            <Route path="/" exact> */}
+        {/* <SignIn />
             </Route>
-            <Route path="/messages" exact>
-              <MessagePage />
-            </Route>
-          </div>
-        </Switch>
-      </BrowserRouter>
-    </Provider>
+            <Route path="/messages" exact> */}
+        {/******** * Move whats in MessagePage to here ***********/}
+        <MessagePage />
+        {/* </Route> */}
+
+        {/* </Switch>
+        </BrowserRouter> */}
+      </div>
+    </Provider >
   )
 }
