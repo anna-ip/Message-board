@@ -4,7 +4,7 @@ This is a Message Board app where client can sign in and post messages, see old 
 
 The App is built with React Redux,fetching a mock Api from db.json with thunks, I've used Redux toolkit for configuring the store and combine reducers and React Router for routes.
 
-I will continue on this project.......................improve the css
+I will continue on this project with buildning a backend for the user with authentication and for the messages.......................improve the css
 
 ## Technologies
 * React
