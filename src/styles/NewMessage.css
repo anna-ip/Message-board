@@ -27,6 +27,7 @@
 input {
 border-radius: 5px;
 }
+
 .input-no {
 	width: 20px;
 }
@@ -39,7 +40,7 @@ textarea {
 	border-radius: 10px;
 	padding: 5px;
 	margin: 5px;
-	resize: none; /** to prevent the posibility to expand the text box **/
+	resize: none; 
 	font-size: 13px;
 }
 

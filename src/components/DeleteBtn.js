@@ -4,9 +4,7 @@ import { fetchDeleteMessage } from 'reducer/messages'
 import 'styles/DeleteBtn.css'
 
 
-
 export const DeleteBtn = (props) => {
-
 	const dispatch = useDispatch()
 
 	const handleDeleteMessageClick = () => {

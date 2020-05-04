@@ -1,7 +1,7 @@
 .message-list {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
+	justify-content: flex-start;
 	align-items: center;
 	max-height: 460px;
 }
@@ -20,13 +20,12 @@ li {
 	width: 60vw;
 	max-width: 500px;
 	min-width: 350px;
-	max-height: 93px;
 	height: auto;
 	border-radius: 10px;
 	list-style: none;
 	background-color: white;
 	padding: 5px;
-	margin: 2% 0;
+	margin: 2% 0 0 0;
   box-shadow: 7px 10px 13px -10px #333333;
 }
 
@@ -60,4 +59,30 @@ li {
 	font-size: medium;
 	margin: 0;
 	word-break: break-all;
+}
+
+.edit-message-input {
+	border-radius: inherit;
+  font-size: inherit;
+  border: none;
+	width: 58vw;
+	height: auto;
+	max-width: 480px;
+	min-width: 335px;
+	background-color: transparent;
+}
+
+textarea p {
+	background-color: transparent;
+	border:0;
+	font-size: medium;
+}
+
+.edit-btn {
+	color: black;
+	font-size: 15px;
+	padding: 0 5px;
+	transform: rotateY(180deg);
+	background-color: inherit;
+	border: none;
 }

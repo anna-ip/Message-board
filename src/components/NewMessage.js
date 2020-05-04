@@ -12,7 +12,6 @@ export const NewMessage = () => {
 
   const handleMessageSubmit = (event) => {
     event.preventDefault()
-
     dispatch(fetchNewMessage(message, author, name))
     // this empties the textarea once submited
     setMessage('')
@@ -20,7 +19,7 @@ export const NewMessage = () => {
 
   return (
     <div className="add-message-container">
-      {/* ******Form for sending a new message******* */}
+      {/****Form for sending a new message ****/}
       <form onSubmit={handleMessageSubmit} className="add-message-form">
         <div className="user-div">
           <span>
@@ -54,22 +53,22 @@ export const NewMessage = () => {
         </div>
 
         <span>
-          <label For="new-message">
+          <label>
             <textarea
               id="new-message"
               className="input-message"
-              rows='3' // doesn't seem to work?
+              rows='3'
               minLength='5'
               maxLength='150'
               placeholder="Type your message"
-              onChange={(event) => setMessage(event.target.value)} // value is what ever we write as a message
+              onChange={(event) => setMessage(event.target.value)}
               value={message}
               required />
           </label>
         </span>
 
 
-        {/* * Form submit button * */}
+        {/**** Form submit button ****/}
         <div className="add-message-btn-container">
           <button
             className="add-message-btn"

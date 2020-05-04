@@ -1,15 +1,22 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchEditMessage } from 'reducer/messages'
 import 'styles/MessageList.css'
-import { EditBtn } from './EditBtn'
 import { DeleteBtn } from './DeleteBtn'
 
 export const MessageList = () => {
-  //this useSelector imports all the messages from the store
-  const allMessages = useSelector((state) => state.messages.allMessages)
+  const [message, setMessage] = useState('')
+  const dispatch = useDispatch()
 
+  // useSelector imports all the messages from the store
+  const allMessages = useSelector((state) => state.messages.allMessages)
   console.log('allMessagesInMessagesList', allMessages)
 
+  const handleSetUpdate = (event) => {
+    event.preventDefault()
+    //pass the edited message id and message
+    dispatch(fetchEditMessage(message.message, message.id))
+  }
 
 
   return (
@@ -19,18 +26,33 @@ export const MessageList = () => {
           <li key={message.id}>
             <div className="header-container">
               <p className="message-name">{message.name}</p>
+
               <div className="btn-container">
-                <EditBtn message={message} />
+                {/*** This button is for sending the PUT request, should be changed to press enter ***/}
+                <button className="edit-btn"
+                  onClick={handleSetUpdate}>
+                  <span role="img" aria-label="Edit">✎</span>
+                </button>
                 <DeleteBtn message={message} />
               </div>
             </div>
             <div className="message-container">
-              <p className="message" key={message.id}>{message.message}</p>
+              {/* Here is the input for changing the message */}
+              <p className="message" onSubmit={handleSetUpdate}>
+                <textarea
+                  className="edit-message-input"
+                  rows='3'
+                  minLength='5'
+                  maxLength='150'
+                  id={message.id}
+                  value={message.message || message.id}
+                  onChange={event => setMessage(event.target.value)}
+                />
+              </p>
             </div>
           </li>
         ))}
       </ul>
-
     </div>
   )
 }
